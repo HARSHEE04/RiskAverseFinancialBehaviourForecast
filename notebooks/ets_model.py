@@ -3,6 +3,8 @@ from pathlib import Path
 import plotly.express as px
 import plotly.graph_objects as go
 from statsmodels.tsa.exponential_smoothing.ets import ETSModel
+from sklearn.metrics import mean_absolute_error, mean_squared_error
+import numpy as np
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -70,3 +72,21 @@ fig.update_layout(
 )
 
 fig.write_image(BASE_DIR / 'figures' / 'etsForecastFig.png')
+
+
+#test to see what model captured
+print("Trend:",ets_fit.model.trend)
+print("Seasonanality:",ets_fit.model.seasonal)
+
+#metric table row for ETS model
+mae = mean_absolute_error(test['GIC Rates'], test['ETS_Forecast'])
+rmse = np.sqrt(mean_squared_error(test['GIC Rates'], test['ETS_Forecast']))
+
+
+metrics_row = pd.DataFrame({
+    'Model':["ETS"],
+    'MAE':[mae],
+    'RMSE':[rmse]
+})
+
+print(metrics_row)
