@@ -2,7 +2,7 @@ import pandas as pd
 from pathlib import Path
 import plotly.express as px
 import plotly.graph_objects as go
-from statsmodels.tsa import arima_model
+from statsmodels.tsa.arima.model import ARIMA
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 import numpy as np
 from statsmodels.tsa.stattools import acf, pacf
@@ -107,3 +107,32 @@ fig_pacf.update_layout(
 
 
 fig_pacf.write_image(BASE_DIR / 'figures' / 'pacfPlot.png')
+
+#___________________________________________________________________________________
+#ARIMA(1,1,1) selected based on ACF and PACF plots and model, ARIMA does differncing for us so we can use original log series
+y_train_log = np.log(train["GIC Rates"])
+arima_model = ARIMA(y_train_log, order=(1,1,1))
+arima_fit = arima_model.fit()
+
+#forecast
+arima_forecast= arima_fit.forecast(steps=horizon)
+
+#now we must transform back the forecasted values to original scale 
+arima_forecast=np.exp(arima_forecast) #exponentiate to reverse log
+test['ARIMA_Forecast'] = arima_forecast.values #put forecasted values on test df under ARIMA_Forecast for evaluation later on
+
+
+#test MAE and RMSE first to check effectivess
+mae = mean_absolute_error(test['GIC Rates'], test['ARIMA_Forecast'])
+rmse = np.sqrt(mean_squared_error(test['GIC Rates'], test['ARIMA_Forecast']))
+
+
+metrics_row = pd.DataFrame({
+    'Model':["ARIMA (1,1,1)"],
+    'MAE':[mae],
+    'RMSE':[rmse]
+})
+
+print("_____________________________")
+print("ARIMA(1,1,1) Model Performance on Test Set")
+print(metrics_row)

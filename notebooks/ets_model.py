@@ -28,6 +28,25 @@ ets_forecast= ets_fit.forecast(steps=horizon)
 test['ETS_Forecast'] = ets_forecast.values #put forecasted values on test df under ETS_Forecast for evaluation later on 
 
 
+
+#test to see what model captured
+print("Trend:",ets_fit.model.trend)
+print("Seasonanality:",ets_fit.model.seasonal)
+
+#metric table row for ETS model
+mae = mean_absolute_error(test['GIC Rates'], test['ETS_Forecast'])
+rmse = np.sqrt(mean_squared_error(test['GIC Rates'], test['ETS_Forecast']))
+
+
+metrics_row = pd.DataFrame({
+    'Model':["ETS"],
+    'MAE':[mae],
+    'RMSE':[rmse]
+})
+
+print(metrics_row)
+
+
 #perform full forecast on entire data
 y_full= df["GIC Rates"]
 
@@ -72,21 +91,3 @@ fig.update_layout(
 )
 
 fig.write_image(BASE_DIR / 'figures' / 'etsForecastFig.png')
-
-
-#test to see what model captured
-print("Trend:",ets_fit.model.trend)
-print("Seasonanality:",ets_fit.model.seasonal)
-
-#metric table row for ETS model
-mae = mean_absolute_error(test['GIC Rates'], test['ETS_Forecast'])
-rmse = np.sqrt(mean_squared_error(test['GIC Rates'], test['ETS_Forecast']))
-
-
-metrics_row = pd.DataFrame({
-    'Model':["ETS"],
-    'MAE':[mae],
-    'RMSE':[rmse]
-})
-
-print(metrics_row)
