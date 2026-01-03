@@ -2,7 +2,8 @@ import pandas as pd
 from pathlib import Path
 import plotly.express as px
 import plotly.graph_objects as go
-from statsmodels.tsa.seasonal import seasonal_decompose
+from sklearn.metrics import mean_absolute_error, mean_squared_error
+import numpy as np
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_PATH = BASE_DIR / "data" / "processedData.csv"
@@ -66,3 +67,16 @@ fig.update_layout(
 
 
 fig.write_image(BASE_DIR / 'figures' / 'naiveForecastFig.png')
+
+
+mae = mean_absolute_error(test['GIC Rates'], test['Naive_Forecast'])
+rmse = np.sqrt(mean_squared_error(test['GIC Rates'], test['Naive_Forecast']))
+
+
+metrics_row = pd.DataFrame({
+    'Model':["Naive"],
+    'MAE':[mae],
+    'RMSE':[rmse]
+})
+
+print(metrics_row)
