@@ -52,8 +52,8 @@ Based on out-of-sample evaluation, **non-seasonal ETS** produced the lowest fore
 │  └─ prophet_model.py
 │
 ├─ src/
-├─ requirements.txt
-└─ README.md
+└─ requirements.txt
+ 
 
 ```
 ## 3. Installation and Setup
