@@ -27,7 +27,6 @@ Based on out-of-sample evaluation, **non-seasonal ETS** produced the lowest fore
 
 ## 2. Repository Structure
 
-```text
 .
 ├─ data/
 │  ├─ rawData.csv
@@ -55,8 +54,6 @@ Based on out-of-sample evaluation, **non-seasonal ETS** produced the lowest fore
 ├─ requirements.txt
 └─ README.md
 
-```text
----
 
 3. Installation and Setup
 Clone the repository
