@@ -54,8 +54,10 @@ Based on out-of-sample evaluation, **non-seasonal ETS** produced the lowest fore
 ├─ requirements.txt
 └─ README.md
 
+---
 
-3. Installation and Setup
+## 3. Installation and Setup
+
 Clone the repository
 git clone https://github.com/HARSHEE04/RiskAverseFinancialBehaviourForecast.git
 cd RiskAverseFinancialBehaviourForecast
@@ -76,7 +78,9 @@ source .venv/bin/activate
 Install dependencies
 pip install -r requirements.txt
 
-4. How to Run the Analysis
+---
+
+## 4. How To Run The Analysis
 
 The project is organized as separate Python scripts, each corresponding to a stage of the time-series workflow.
 
@@ -98,7 +102,7 @@ Computes evaluation metrics
 
 Saves output figures to the figures/ directory
 
-5. Model Evaluation Summary
+## 5. Model Evaluation Summary
 
 Models were evaluated using a time-based train–test split, with the final 12 months held out for testing.
 
@@ -115,7 +119,7 @@ ARIMA did not improve upon the baseline
 
 Prophet performed poorly due to weak seasonality and an abrupt macroeconomic regime shift
 
-6. Tech Stack
+## 6. Tech Stack
 
 Language: Python
 
