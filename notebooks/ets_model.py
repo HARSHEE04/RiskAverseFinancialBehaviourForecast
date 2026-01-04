@@ -44,10 +44,12 @@ metrics_row = pd.DataFrame({
     'RMSE':[rmse]
 })
 
+print("_____________________________")
+print("ETS Model Performance on Test Set")
 print(metrics_row)
 
 
-#perform full forecast on entire data
+#perform full forecast on entire data since metrics perform better than baseline.
 y_full= df["GIC Rates"]
 
 ETS_full_model =ETSModel(y_full, error='add', seasonal_periods=12)

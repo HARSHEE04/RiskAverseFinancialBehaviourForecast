@@ -79,4 +79,6 @@ metrics_row = pd.DataFrame({
     'RMSE':[rmse]
 })
 
+print("_____________________________")
+print("Baseline Model Performance on Test Set")
 print(metrics_row)
