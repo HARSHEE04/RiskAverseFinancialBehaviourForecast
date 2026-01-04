@@ -54,7 +54,79 @@ Based on out-of-sample evaluation, **non-seasonal ETS** produced the lowest fore
 ├─ src/
 ├─ requirements.txt
 └─ README.md
+
 ```text
 ---
 
-## 1. Project Overview
+3. Installation and Setup
+Clone the repository
+git clone https://github.com/HARSHEE04/RiskAverseFinancialBehaviourForecast.git
+cd RiskAverseFinancialBehaviourForecast
+
+Create and activate a virtual environment (recommended)
+python -m venv .venv
+
+
+Windows
+
+.venv\Scripts\activate
+
+
+macOS / Linux
+
+source .venv/bin/activate
+
+Install dependencies
+pip install -r requirements.txt
+
+4. How to Run the Analysis
+
+The project is organized as separate Python scripts, each corresponding to a stage of the time-series workflow.
+
+Recommended execution order
+python notebooks/EDA_TimeSeries.py
+python notebooks/baseline_model.py
+python notebooks/ets_model.py
+python notebooks/arima_model.py
+python notebooks/prophet_model.py
+
+
+Each script:
+
+Loads the processed dataset
+
+Trains the corresponding model
+
+Computes evaluation metrics
+
+Saves output figures to the figures/ directory
+
+5. Model Evaluation Summary
+
+Models were evaluated using a time-based train–test split, with the final 12 months held out for testing.
+
+Model	MAE	RMSE
+Naive Baseline	3.57	3.93
+Exponential Smoothing (ETS)	3.46	3.83
+ARIMA (1,1,1)	3.58	3.94
+Prophet	23.20	23.95
+Key Findings
+
+Exponential Smoothing (ETS) outperformed all alternatives
+
+ARIMA did not improve upon the baseline
+
+Prophet performed poorly due to weak seasonality and an abrupt macroeconomic regime shift
+
+6. Tech Stack
+
+Language: Python
+
+Data & Analysis: pandas, numpy
+
+Visualization: plotly, matplotlib
+
+Time-Series Modeling: statsmodels (ETS, ARIMA), prophet
+
+Evaluation: scikit-learn (MAE, RMSE)
+
