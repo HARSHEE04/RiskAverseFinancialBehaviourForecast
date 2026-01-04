@@ -59,37 +59,45 @@ Based on out-of-sample evaluation, **non-seasonal ETS** produced the lowest fore
 ## 3. Installation and Setup
 Clone the repository
 
-bash
+```bash
 git clone https://github.com/HARSHEE04/RiskAverseFinancialBehaviourForecast.git
 cd RiskAverseFinancialBehaviourForecast
+```
 Create and activate a virtual environment (recommended)
 
-bash
+```bash
 python -m venv .venv
+```
 Windows
 
-bash
+```bash
 .venv\Scripts\activate
+```
 macOS / Linux
 
-bash
+```bash
 source .venv/bin/activate
+```
+
 Install dependencies
 
-bash
+```bash
 pip install -r requirements.txt
+```
 
 ## 4. How To Run The Analysis
 The project is organized as separate Python scripts, each corresponding to a stage of the time-series workflow.
 
 Recommended execution order
 
-bash
+```bash
 python notebooks/EDA_TimeSeries.py
 python notebooks/baseline_model.py
 python notebooks/ets_model.py
 python notebooks/arima_model.py
 python notebooks/prophet_model.py
+```
+
 Each script:
 
 Loads the processed dataset
