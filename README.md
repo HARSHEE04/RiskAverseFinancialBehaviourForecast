@@ -2,7 +2,7 @@
 
 This project analyzes and forecasts population-level **risk-averse financial behavior** using Google Trends search interest in **Guaranteed Investment Certificates (GICs)** in Canada. Search interest in *“GIC rates”* is treated as a proxy for conservative investment intent, and multiple classical time-series models are evaluated over a **12-month forecast horizon**.
 
-👉 **Full case study (business framing + technical deep dive):**  
+👉 **Full case study (business framing +  deep dive):**  
 [Using Time-Series Models to Forecast Risk-Averse Financial Behavior](https://medium.com/@harshetasharma5/using-time-series-models-to-forecast-risk-averse-financial-behavior-465fd3a25112)
 
 ---
