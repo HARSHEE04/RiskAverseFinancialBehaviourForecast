@@ -133,7 +133,7 @@ Language: Python
 
 Data & Analysis: pandas, numpy
 
-Visualization: plotly, matplotlib
+Visualization: plotly
 
 Time-Series Modeling: statsmodels (ETS, ARIMA), prophet
 
